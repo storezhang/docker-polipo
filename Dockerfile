@@ -16,6 +16,7 @@ RUN set -x \
     && apk upgrade \
     && apk add --no-cache tzdata \
     && cp /usr/share/zoneinfo/Asia/Chongqing /etc/localtime \
+    && chmod +x /usr/bin/polipo \
     && rm -rf /tmp/*
 
 ENTRYPOINT ["/usr/bin/polipo", "-c"]
