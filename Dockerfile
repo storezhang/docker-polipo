@@ -7,7 +7,6 @@ ENV POLIPO_DATA="/polipo-data"
 VOLUME ${POLIPO_DATA}
 WORKDIR ${POLIPO_DATA}
 
-COPY entrypoint.sh /entrypoint.sh
 ADD ./polipo/polipo /usr/bin/polipo
 
 RUN set -x \
@@ -17,7 +16,6 @@ RUN set -x \
     && apk upgrade \
     && apk add --no-cache tzdata \
     && cp /usr/share/zoneinfo/Asia/Chongqing /etc/localtime \
-    && chmod +x /entrypoint.sh \
     && rm -rf /tmp/*
 
 ENTRYPOINT ["/usr/bin/polipo", "-c"]
