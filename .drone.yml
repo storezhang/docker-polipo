@@ -1,0 +1,21 @@
+kind: pipeline
+name: yapi
+
+steps:
+  - name: docker
+    image: plugins/docker
+    pull: always
+    when:
+      event:
+        - pull_request
+        - tag
+    settings:
+      repo: storezhang/polipo
+      dockerfile: ./Dockerfile
+      mirror: https://registry.docker-cn.com
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+      auto_tag: true
+      force_tag: true
