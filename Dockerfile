@@ -20,4 +20,4 @@ RUN set -x \
     && rm -rf /tmp/*
 
 ENTRYPOINT ["/usr/bin/polipo", "-c"]
-CMD ["/${POLIPO_DATA}/polipo/config"]
+CMD ["/${POLIPO_DATA}/config"]
